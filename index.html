@@ -15,18 +15,18 @@
             --gray-text: #888;
         }
 
-        /* AJUSTE AQUI: Usando fontes de sistema para garantir que o layout carregue */
+        /* AJUSTE AQUI: Usando fontes de sistema e a cor principal foi movida para o <body> inline */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
 
+        /* A PROPRIEDADE body FOI ESVAZIADA AQUI, POIS O FUNDO AGORA ESTÁ INLINE */
         body {
-            background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.5;
             overflow-x: hidden;
             font-weight: 300;
         }
 
-        /* HEADER & LOGO MANUAL */
+        /* HEADER & LOGO MANUAL (todo o restante do CSS é o mesmo) */
         header {
             position: fixed;
             top: 0;
@@ -40,8 +40,7 @@
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
-        /* ESTILO DO LOGO CRIADO MANUALMENTE */
+        /* ... (O restante do seu CSS segue aqui) ... */
         .voamkt-logo {
             display: flex;
             flex-direction: column;
@@ -417,7 +416,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: #030303; color: #ffffff;">
 
     <header>
         <a href="#aplicar" class="header-cta">Ver Status</a>
@@ -443,8 +442,8 @@
             A VOAMKT não aceita projetos de "teste". Apenas crescimento sério.
         </div>
     </section>
-
-    <section class="section reveal">
+    
+        <section class="section reveal">
         <h2 class="section-title">O CUSTO MAIS CARO NÃO É O CLIQUE.<br>É O <span class="highlight-text">TEMPO PERDIDO.</span></h2>
         
         <p style="text-align: center; color: var(--gray-text); margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
