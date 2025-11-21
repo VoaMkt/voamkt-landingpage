@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoaMkt | Protocolo de Receita Previsível</title>
+    
         <style>
         /* --- ESTUDO DE DESIGN: DARK MODE PREMIUM E MINIMALISTA --- */
         :root {
@@ -15,10 +16,15 @@
             --gray-text: #888;
         }
 
-        /* AJUSTE AQUI: Usando fontes de sistema e a cor principal foi movida para o <body> inline */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        /* AJUSTE RÁPIDO: Usando fontes de sistema para garantir carregamento instantâneo */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+        }
 
-        /* A PROPRIEDADE body FOI ESVAZIADA AQUI, POIS O FUNDO AGORA ESTÁ INLINE */
+        /* A cor do fundo foi movida para o <body> inline, o restante é mantido aqui */
         body {
             color: var(--text-color);
             line-height: 1.5;
@@ -26,7 +32,7 @@
             font-weight: 300;
         }
 
-        /* HEADER & LOGO MANUAL (todo o restante do CSS é o mesmo) */
+        /* HEADER & LOGO MANUAL */
         header {
             position: fixed;
             top: 0;
@@ -40,7 +46,6 @@
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        /* ... (O restante do seu CSS segue aqui) ... */
         .voamkt-logo {
             display: flex;
             flex-direction: column;
@@ -104,7 +109,8 @@
             align-items: center;
             text-align: center;
             padding: 120px 20px 60px;
-            background: radial-gradient(circle at center, #111 0%, #030303 70%);
+            /* Gradiente mais suave para o fundo */
+            background: radial-gradient(circle at center, #111 0%, #030303 70%); 
         }
 
         .hero h1 {
@@ -128,29 +134,28 @@
             animation: fadeUp 0.8s forwards 0.5s;
         }
 
-        /* BOTÃO DE CTA PRINCIPAL (AGORA MAIOR E MAIS VISÍVEL) */
+        /* BOTÃO DE CTA PRINCIPAL (MAIOR E MAIS VISÍVEL) */
         .btn-cta { 
             background: var(--button-bg);
             color: var(--button-text); 
-            padding: 35px 70px; /* AUMENTADO */
-            font-size: 1.75rem; /* AUMENTADO */
-            font-weight: 900; /* MAIS PESADO */
+            padding: 35px 70px;
+            font-size: 1.75rem;
+            font-weight: 900;
             text-transform: uppercase;
             text-decoration: none;
             border-radius: 4px;
-            letter-spacing: 1.5px; /* AUMENTADO */
+            letter-spacing: 1.5px;
             transition: all 0.3s;
             opacity: 1; 
             animation: none;
-            box-shadow: 0 0 70px rgba(23, 226, 255, 0.6); /* SOMBRA INTENSA */
-            max-width: 90vw; /* GARANTE QUE NÃO ULTRAPASSE EM MOBILE */
+            box-shadow: 0 0 70px rgba(23, 226, 255, 0.6); 
+            max-width: 90vw;
+            display: inline-block; /* Para garantir o alinhamento central */
         }
         .btn-cta:hover {
-            transform: scale(1.06); /* EFEITO DE HOVER AUMENTADO */
-            box-shadow: 0 0 100px rgba(23, 226, 255, 0.9); /* SOMBRA INTENSA NO HOVER */
+            transform: scale(1.06);
+            box-shadow: 0 0 100px rgba(23, 226, 255, 0.9);
         }
-        /* FIM DO AJUSTE .btn-cta */
-
 
         /* BOTÃO DE CTA SECUNDÁRIO (Final) */
         .btn-secondary {
@@ -173,8 +178,7 @@
             transform: scale(1.03);
             box-shadow: 0 0 60px rgba(23, 226, 255, 0.6);
         }
-        /* FIM DO AJUSTE .btn-secondary */
-        
+
         .tag-exclusive {
             margin-top: 25px;
             font-size: 0.9rem;
@@ -206,7 +210,6 @@
 
         /* PROBLEMA: CARDS com ênfase no dinheiro */
         .cards-grid {
-            /* Alterado para 3 colunas para acomodar 6 cards */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 30px;
@@ -276,7 +279,7 @@
             font-weight: 700;
         }
         
-        /* NOVO CSS PARA DIAGRAMA DO FUNIL */
+        /* DIAGRAMA DO FUNIL */
         .funnel-diagram {
             flex: 1;
             height: 400px;
@@ -404,11 +407,13 @@
             .funnel-diagram { height: 300px; }
             .case-study blockquote { font-size: 1.4rem; }
             .cta-final-box { padding: 40px 20px; }
-            .cards-grid { grid-template-columns: 1fr; } /* Garante 1 coluna no mobile */
+            .cards-grid { grid-template-columns: 1fr; } 
             .btn-cta, .btn-secondary {
-                padding: 25px 35px; /* Ajuste o padding para não quebrar no mobile */
-                font-size: 1.1rem; /* Ajuste o font-size para não quebrar no mobile */
+                padding: 25px 35px;
+                font-size: 1.1rem;
             }
+            .header-cta { padding: 10px 20px; font-size: 0.8rem; }
+            .voamkt-logo { display: none; } /* Oculta logo no mobile se preferir focar no CTA */
         }
         /* Ajuste fino para tablets em modo paisagem, se necessário manter 3 colunas */
         @media (min-width: 900px) and (max-width: 1200px) {
@@ -416,6 +421,7 @@
         }
     </style>
 </head>
+
 <body style="background-color: #030303; color: #ffffff;">
 
     <header>
@@ -443,7 +449,7 @@
         </div>
     </section>
     
-        <section class="section reveal">
+    <section class="section reveal">
         <h2 class="section-title">O CUSTO MAIS CARO NÃO É O CLIQUE.<br>É O <span class="highlight-text">TEMPO PERDIDO.</span></h2>
         
         <p style="text-align: center; color: var(--gray-text); margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
@@ -540,7 +546,7 @@
         </div>
     </section>
 
-    <script>
+        <script>
         window.addEventListener('scroll', reveal);
         function reveal(){
             var reveals = document.querySelectorAll('.reveal');
@@ -556,6 +562,9 @@
                 }
             }
         }
+        
+        // Inicializa o 'reveal' ao carregar a página
+        reveal();
     </script>
 </body>
 </html>
