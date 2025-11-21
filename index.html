@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoaMkt | Protocolo de Receita Previsível</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <style>
+        <style>
         /* --- ESTUDO DE DESIGN: DARK MODE PREMIUM E MINIMALISTA --- */
         :root {
             --bg-color: #030303; 
@@ -18,7 +15,8 @@
             --gray-text: #888;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; }
+        /* AJUSTE AQUI: Usando fontes de sistema para garantir que o layout carregue */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
 
         body {
             background-color: var(--bg-color);
@@ -52,7 +50,7 @@
             cursor: pointer;
         }
         .logo-text {
-            font-family: 'Montserrat', sans-serif; 
+            font-family: sans-serif; /* Usando genérica */
             font-size: 1.4rem;
             font-weight: 600;
             letter-spacing: 4px;
@@ -134,9 +132,7 @@
         /* BOTÃO DE CTA PRINCIPAL (AGORA MAIOR E MAIS VISÍVEL) */
         .btn-cta { 
             background: var(--button-bg);
-            /* CORREÇÃO AQUI */
             color: var(--button-text); 
-            /* FIM DA CORREÇÃO */
             padding: 35px 70px; /* AUMENTADO */
             font-size: 1.75rem; /* AUMENTADO */
             font-weight: 900; /* MAIS PESADO */
@@ -375,7 +371,6 @@
         .checklist li {
             list-style: none;
             margin-bottom: 10px;
-            font-size: 1.1rem;
             color: #fff;
         }
         .checklist li:before {
