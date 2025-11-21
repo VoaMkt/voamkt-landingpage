@@ -1,4 +1,4 @@
-<style>
+
         /* --- ESTUDO DE DESIGN: DARK MODE PREMIUM E MINIMALISTA --- */
         :root {
             --bg-color: #030303; 
@@ -401,4 +401,4 @@
              .cards-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
-    </style>
+
