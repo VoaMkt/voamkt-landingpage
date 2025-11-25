@@ -45,41 +45,48 @@
 
         /* LOGO À ESQUERDA */
         .voamkt-logo {
+            display: flex; /* Mude para flex para alinhar símbolo e texto lado a lado */
+            align-items: center; /* Alinha verticalmente símbolo e texto principal */
+            cursor: pointer;
+            flex-shrink: 0;
+            gap: 10px; /* Espaçamento entre o ícone e o texto */
+        }
+        /* Container para o texto do logo (VOAMKT e Engenharia de Receita) */
+        .logo-text-container {
             display: flex;
             flex-direction: column;
-            align-items: center; 
-            cursor: pointer;
-            flex-shrink: 0; /* Impede que o logo encolha desnecessariamente */
+            align-items: flex-start; /* Alinha o texto à esquerda */
         }
         .logo-text {
             font-family: 'Montserrat', sans-serif; 
             font-size: 1.4rem;
             font-weight: 600;
             letter-spacing: 4px;
-            margin-top: -10px;
+            margin-top: 0; /* Garante que não haja margem desnecessária */
             color: #fff;
+            line-height: 1; /* Ajusta a altura da linha para evitar espaços extras */
         }
         .logo-graphic {
-            font-size: 2.2rem;
             line-height: 0.5;
             color: var(--highlight-color); 
-            transform: rotate(-15deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .logo-graphic:before { content: "\2197"; } 
+        .logo-graphic svg {
+            width: 2.2rem; /* Tamanho do SVG */
+            height: 2.2rem;
+            stroke-width: 2.5; /* Ajustado para a nova seta */
+        }
         .logo-subtitle {
             font-size: 0.65rem;
             letter-spacing: 2px;
             color: #777;
-            margin-top: 2px;
+            margin-top: 2px; /* Espaço entre o nome principal e o subtítulo */
             text-transform: uppercase;
+            line-height: 1; /* Ajusta a altura da linha */
         }
-        .logo-line {
-            width: 90%;
-            height: 1px;
-            background-color: #777;
-            border: none;
-            margin: 4px 0 0;
-        }
+        /* REMOVEMOS A LINHA LOGO-LINE */
 
         /* BOTÃO HEADER À DIREITA */
         .header-cta {
@@ -442,9 +449,15 @@
             .checklist li { padding-left: 15px; } /* Ajusta padding do item da lista */
             .checklist li:before { left: -5px; } /* Ajusta a posição da seta */
             .btn-secondary { padding: 18px 35px; font-size: 1.1rem; max-width: 90vw; }
+
+            /* Logo adjustments for tablets */
+            .voamkt-logo { gap: 8px; } /* Espaçamento ajustado para telas menores */
+            .logo-text { font-size: 1.2rem; letter-spacing: 3px; }
+            .logo-graphic svg { width: 1.8rem; height: 1.8rem; }
+            .logo-subtitle { font-size: 0.55rem; letter-spacing: 1.5px; margin-top: 1px; }
         }
 
-        /* Ajustes para telas menores que 768px (smartphones) - CORRIGIDO */
+        /* Ajustes para telas menores que 768px (smartphones) */
         @media (max-width: 768px) {
             header {
                 flex-direction: row; 
@@ -464,20 +477,18 @@
                 padding-right: 0; 
                 margin-top: 0; 
             }
-            .voamkt-logo .logo-text { 
+            .logo-text { 
                 font-size: 1rem; 
                 letter-spacing: 2px; 
-                margin-top: -8px;
             }
-            .voamkt-logo .logo-graphic { 
-                font-size: 1.4rem; 
+            .logo-graphic svg { 
+                width: 1.4rem; 
+                height: 1.4rem; 
             }
-            .voamkt-logo .logo-subtitle { 
+            .logo-subtitle { 
                 font-size: 0.45rem; 
                 letter-spacing: 0.8px; 
-            }
-            .voamkt-logo .logo-line {
-                width: 80%; 
+                margin-top: 1px;
             }
 
             .hero { padding: 100px 15px 40px; }
@@ -511,9 +522,9 @@
             .hero h1 { font-size: 1.8rem; }
             .section-title { font-size: 1.6rem; }
             .btn-cta { padding: 18px 25px; font-size: 1rem; }
-            .voamkt-logo .logo-text { font-size: 0.9rem; letter-spacing: 1.5px; }
-            .voamkt-logo .logo-graphic { font-size: 1.2rem; }
-            .voamkt-logo .logo-subtitle { font-size: 0.4rem; letter-spacing: 0.6px; }
+            .logo-text { font-size: 0.9rem; letter-spacing: 1.5px; }
+            .logo-graphic svg { width: 1.2rem; height: 1.2rem; } /* Ajuste de tamanho do SVG no mobile */
+            .logo-subtitle { font-size: 0.4rem; letter-spacing: 0.6px; }
             .header-cta { padding: 8px 15px; font-size: 0.8rem; }
             .checklist { padding-left: 5px; } /* Ajuste final para checklist */
             .checklist li { padding-left: 10px; }
@@ -525,10 +536,15 @@
 
     <header>
         <div class="voamkt-logo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
-            <div class="logo-graphic"></div> 
-            <div class="logo-text">VOAMKT</div>
-            <hr class="logo-line">
-            <div class="logo-subtitle">Engenharia de Receita</div>
+            <div class="logo-graphic">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L19 9M12 2L5 9M12 8L19 15M12 8L5 15M12 14L19 21M12 14L5 21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div> 
+            <div class="logo-text-container">
+                <div class="logo-text">VOAMKT</div>
+                <div class="logo-subtitle">Engenharia de Receita</div>
+            </div>
         </div>
 
         <a href="https://tally.so/r/rjjpqN" class="header-cta">Aplicar Agora</a>
