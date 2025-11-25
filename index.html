@@ -49,6 +49,7 @@
             flex-direction: column;
             align-items: center; 
             cursor: pointer;
+            flex-shrink: 0; /* Impede que o logo encolha desnecessariamente */
         }
         .logo-text {
             font-family: 'Montserrat', sans-serif; 
@@ -92,6 +93,7 @@
             border-radius: 4px;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            flex-shrink: 0; /* Impede que o botão encolha desnecessariamente */
         }
         .header-cta:hover {
             background: var(--highlight-color);
@@ -358,20 +360,26 @@
             text-align: left;
             margin-bottom: 30px; 
             color: var(--gray-text);
+            padding-left: 20px; /* Adiciona padding para as setas terem espaço */
+            position: relative; /* Para posicionar as setas absolutamente */
         }
         .checklist li {
             list-style: none;
             margin-bottom: 10px;
             font-size: 1.1rem;
             color: #fff;
+            position: relative; /* Para posicionar a seta individualmente */
+            padding-left: 20px; /* Espaço para a seta */
         }
         .checklist li:before {
             content: ">>";
             color: var(--highlight-color);
             font-weight: bold;
             display: inline-block;
-            width: 1.5em;
-            margin-left: -1.5em;
+            position: absolute; /* Posição absoluta para a seta */
+            left: 0; /* Alinha a seta à esquerda do padding do li */
+            top: 0;
+            width: 1.5em; /* Garante espaço para a seta */
         }
 
         /* BOTÃO SECUNDÁRIO */
@@ -413,6 +421,7 @@
         }
         
         /* MEDIA QUERIES */
+        /* Ajustes para telas menores que 992px (tablets e mobile) */
         @media (max-width: 992px) {
             .hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); letter-spacing: -1px; }
             .hero p { font-size: 1.1rem; }
@@ -429,18 +438,48 @@
             
             .case-study blockquote { font-size: 1.5rem; padding-left: 20px; }
             .cta-final-box { padding: 50px 30px; }
+            .checklist { padding-left: 15px; } /* Ajusta padding do checklist */
+            .checklist li { padding-left: 15px; } /* Ajusta padding do item da lista */
+            .checklist li:before { left: -5px; } /* Ajusta a posição da seta */
             .btn-secondary { padding: 18px 35px; font-size: 1.1rem; max-width: 90vw; }
         }
 
+        /* Ajustes para telas menores que 768px (smartphones) - CORRIGIDO */
         @media (max-width: 768px) {
             header {
-                flex-direction: column-reverse; /* Mantém CTA em cima no mobile */
+                flex-direction: row; 
+                justify-content: space-between; 
+                align-items: center; 
                 padding: 15px 5%;
-                gap: 15px;
+                gap: 10px; 
             }
-            .header-cta { width: 100%; text-align: center; padding: 15px 0; }
-            .voamkt-logo { padding-right: 0; margin-top: 10px; }
-            
+            .header-cta { 
+                width: auto; 
+                text-align: center;
+                padding: 10px 18px; 
+                font-size: 0.9rem; 
+                letter-spacing: 0.5px;
+            }
+            .voamkt-logo { 
+                padding-right: 0; 
+                margin-top: 0; 
+            }
+            .voamkt-logo .logo-text { 
+                font-size: 1rem; 
+                letter-spacing: 2px; 
+                margin-top: -8px;
+            }
+            .voamkt-logo .logo-graphic { 
+                font-size: 1.4rem; 
+            }
+            .voamkt-logo .logo-subtitle { 
+                font-size: 0.45rem; 
+                letter-spacing: 0.8px; 
+            }
+            .voamkt-logo .logo-line {
+                width: 80%; 
+            }
+
             .hero { padding: 100px 15px 40px; }
             .hero h1 { font-size: 2.2rem; letter-spacing: -0.5px; line-height: 1.2; }
             .btn-cta { padding: 20px 30px; font-size: 1.2rem; }
@@ -461,13 +500,24 @@
             .case-study blockquote { font-size: 1.2rem; margin: 20px auto; padding-left: 15px; }
             
             .cta-final-box { padding: 30px 15px; }
+            .checklist { padding-left: 10px; } /* Ajusta padding do checklist para telas menores */
+            .checklist li { padding-left: 10px; } /* Ajusta padding do item da lista */
+            .checklist li:before { left: -10px; } /* Ajusta a posição da seta para telas menores */
             .btn-secondary { padding: 15px 25px; font-size: 1rem; }
         }
         
+        /* Ajustes para telas bem pequenas (ex: iPhone SE) */
         @media (max-width: 480px) {
             .hero h1 { font-size: 1.8rem; }
             .section-title { font-size: 1.6rem; }
             .btn-cta { padding: 18px 25px; font-size: 1rem; }
+            .voamkt-logo .logo-text { font-size: 0.9rem; letter-spacing: 1.5px; }
+            .voamkt-logo .logo-graphic { font-size: 1.2rem; }
+            .voamkt-logo .logo-subtitle { font-size: 0.4rem; letter-spacing: 0.6px; }
+            .header-cta { padding: 8px 15px; font-size: 0.8rem; }
+            .checklist { padding-left: 5px; } /* Ajuste final para checklist */
+            .checklist li { padding-left: 10px; }
+            .checklist li:before { left: -5px; }
         }
     </style>
 </head>
@@ -606,12 +656,12 @@
             for(var i = 0; i < reveals.length; i++){
                 var windowheight = window.innerHeight;
                 var revealtop = reveals[i].getBoundingClientRect().top;
-                var revealpoint = 150;
+                var revealpoint = 150; // Ajuste este valor para controlar quando a animação começa
                 if(revealtop < windowheight - revealpoint){
                     reveals[i].classList.add('active');
-                }
-                else{
-                    reveals[i].classList.remove('active');
+                } else {
+                    // Opcional: para desativar a animação ao rolar para cima
+                    // reveals[i].classList.remove('active'); 
                 }
             }
         }
