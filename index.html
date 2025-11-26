@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VoaMkt | Engenharia de Receita Previsível</title>
+    <title>VoaMkt | Aceleração de Vendas B2B</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -45,26 +45,25 @@
 
         /* LOGO À ESQUERDA */
         .voamkt-logo {
-            display: flex; /* Mude para flex para alinhar símbolo e texto lado a lado */
-            align-items: center; /* Alinha verticalmente símbolo e texto principal */
+            display: flex;
+            align-items: center;
             cursor: pointer;
             flex-shrink: 0;
-            gap: 10px; /* Espaçamento entre o ícone e o texto */
+            gap: 10px;
         }
-        /* Container para o texto do logo (VOAMKT e Engenharia de Receita) */
         .logo-text-container {
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Alinha o texto à esquerda */
+            align-items: flex-start;
         }
         .logo-text {
             font-family: 'Montserrat', sans-serif; 
             font-size: 1.4rem;
             font-weight: 600;
             letter-spacing: 4px;
-            margin-top: 0; /* Garante que não haja margem desnecessária */
+            margin-top: 0;
             color: #fff;
-            line-height: 1; /* Ajusta a altura da linha para evitar espaços extras */
+            line-height: 1;
         }
         .logo-graphic {
             line-height: 0.5;
@@ -74,19 +73,18 @@
             align-items: center;
         }
         .logo-graphic svg {
-            width: 2.2rem; /* Tamanho do SVG */
+            width: 2.2rem;
             height: 2.2rem;
-            stroke-width: 2.5; /* Ajustado para a nova seta */
+            stroke-width: 2.5;
         }
         .logo-subtitle {
             font-size: 0.65rem;
             letter-spacing: 2px;
             color: #777;
-            margin-top: 2px; /* Espaço entre o nome principal e o subtítulo */
+            margin-top: 2px;
             text-transform: uppercase;
-            line-height: 1; /* Ajusta a altura da linha */
+            line-height: 1;
         }
-        /* REMOVEMOS A LINHA LOGO-LINE */
 
         /* BOTÃO HEADER À DIREITA */
         .header-cta {
@@ -100,7 +98,7 @@
             border-radius: 4px;
             text-transform: uppercase;
             transition: all 0.3s ease;
-            flex-shrink: 0; /* Impede que o botão encolha desnecessariamente */
+            flex-shrink: 0;
         }
         .header-cta:hover {
             background: var(--highlight-color);
@@ -119,6 +117,7 @@
             background: radial-gradient(circle at center, #111 0%, #030303 70%);
         }
 
+        /* Estilo para o H1 principal do Hero */
         .hero h1 {
             font-size: clamp(2.8rem, 6vw, 5rem);
             font-weight: 900;
@@ -128,6 +127,19 @@
             margin-bottom: 25px;
             opacity: 0;
             animation: fadeUp 0.8s forwards 0.2s;
+        }
+        
+        /* Estilo para o H2 no Hero (agora o subtítulo "CHEGA DE PERDER TEMPO...") */
+        .hero h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem); /* Tamanho menor que o h1 */
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            max-width: 900px;
+            margin-bottom: 25px;
+            color: #fff; /* Garante a cor branca */
+            opacity: 0;
+            animation: fadeUp 0.8s forwards 0.4s; /* Atraso diferente do h1 */
         }
 
         .hero p {
@@ -178,7 +190,7 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        h2.section-title {
+        h2.section-title { 
             font-size: 3.5rem;
             text-align: center;
             font-weight: 700;
@@ -262,71 +274,78 @@
             font-weight: 700;
         }
         
-        /* DIAGRAMA DO FUNIL */
+        /* DIAGRAMA DO FUNIL - CORRIGIDO */
         .funnel-diagram {
             flex: 1;
-            height: 450px; 
+            /* Removido height fixo aqui para permitir que o SVG determine a altura */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
+            position: relative; /* Mantém relative para o posicionamento das labels internas */
             padding: 20px;
             background: #000;
             border: 1px solid #1a1a1a;
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            overflow: hidden; 
+            overflow: hidden; /* Garante que nada saia do container */
+            aspect-ratio: 1 / 1; /* Adiciona uma proporção para que o funil seja quadrado */
+            max-width: 450px; /* Limite o tamanho máximo do funil em telas maiores */
         }
         .funnel-diagram svg {
             width: 100%;
             height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transform: translateY(10%); 
+            /* Removidos position: absolute e transform: translateY(10%); */
+            /* Deixamos o SVG fluir naturalmente */
         }
         .funnel-diagram .funnel-stage {
-            fill: #1a1a1a; 
+            fill: #1a1a1a;  
             stroke: #333;
             stroke-width: 1;
             transition: fill 0.5s ease-in-out;
         }
         .funnel-diagram #stage3 {
-            fill: var(--highlight-color); 
+            fill: var(--highlight-color);  
             stroke: var(--highlight-color);
             box-shadow: 0 0 15px rgba(23, 226, 255, 0.5);
         }
+        
+        /* Novas labels de texto para o funil */
         .funnel-diagram .funnel-label {
             position: absolute;
             color: var(--text-color);
             font-weight: 600;
             text-transform: uppercase;
             text-align: center;
-            pointer-events: none; 
-            z-index: 10; 
-            white-space: nowrap; 
+            pointer-events: none;  
+            z-index: 10;  
+            white-space: nowrap;  
             padding: 5px 10px;
             border-radius: 3px;
+            left: 50%; /* Centraliza horizontalmente */
+            transform: translateX(-50%); /* Ajuste fino de centralização */
         }
+
+        /* Posicionamento específico para cada label dentro do funil (ajustado para o SVG) */
         .funnel-diagram .label-top {
-            top: 15%;
-            font-size: 1.1rem;
+            top: 15%; /* Ajuste a porcentagem para mover a label para cima/baixo */
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Use clamp para responsividade */
             color: #ccc;
         }
         .funnel-diagram .label-middle {
             top: 45%;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             color: #fff;
         }
         .funnel-diagram .label-bottom {
             bottom: 10%;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             font-weight: 700;
             background-color: var(--highlight-color);
             color: var(--button-text);
             box-shadow: 0 0 20px rgba(23, 226, 255, 0.7);
         }
+
 
         /* CASE STUDY */
         .case-study {
@@ -365,36 +384,36 @@
         .checklist {
             display: inline-block;
             text-align: left;
-            margin-bottom: 30px; 
+            margin-bottom: 30px;  
             color: var(--gray-text);
-            padding-left: 20px; /* Adiciona padding para as setas terem espaço */
-            position: relative; /* Para posicionar as setas absolutamente */
+            padding-left: 20px;  
+            position: relative;  
         }
         .checklist li {
             list-style: none;
             margin-bottom: 10px;
             font-size: 1.1rem;
             color: #fff;
-            position: relative; /* Para posicionar a seta individualmente */
-            padding-left: 20px; /* Espaço para a seta */
+            position: relative;  
+            padding-left: 20px;  
         }
         .checklist li:before {
             content: ">>";
             color: var(--highlight-color);
             font-weight: bold;
             display: inline-block;
-            position: absolute; /* Posição absoluta para a seta */
-            left: 0; /* Alinha a seta à esquerda do padding do li */
+            position: absolute;  
+            left: 0;  
             top: 0;
-            width: 1.5em; /* Garante espaço para a seta */
+            width: 1.5em;  
         }
 
         /* BOTÃO SECUNDÁRIO */
         .btn-secondary {
             background: var(--button-bg);
             color: var(--button-text);
-            padding: 22px 45px; 
-            font-size: 1.25rem; 
+            padding: 22px 45px;  
+            font-size: 1.25rem;  
             font-weight: 700;
             text-transform: uppercase;
             text-decoration: none;
@@ -402,9 +421,9 @@
             letter-spacing: 0.8px;
             transition: all 0.3s;
             box-shadow: 0 0 30px rgba(23, 226, 255, 0.4);
-            display: block; 
-            margin: 30px auto 0 auto; 
-            max-width: 450px; 
+            display: block;  
+            margin: 30px auto 0 auto;  
+            max-width: 450px;  
         }
         .btn-secondary:hover {
             transform: scale(1.03);
@@ -428,71 +447,74 @@
         }
         
         /* MEDIA QUERIES */
-        /* Ajustes para telas menores que 992px (tablets e mobile) */
         @media (max-width: 992px) {
             .hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); letter-spacing: -1px; }
+            .hero h2 { font-size: clamp(1.8rem, 4.5vw, 3.5rem); } /* Ajuste para h2 no hero */
             .hero p { font-size: 1.1rem; }
-            .section-title { font-size: clamp(2rem, 5vw, 3rem); }
+            h2.section-title { font-size: clamp(2rem, 5vw, 3rem); }  
             .btn-cta { padding: 25px 45px; font-size: 1.4rem; max-width: 80vw; }
             .header-cta { padding: 12px 25px; font-size: 13px; }
             
             .cards-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
             .mechanism-container { flex-direction: column; gap: 40px; }
-            .funnel-diagram { height: 350px; width: 90%; }
-            .funnel-diagram .label-top { top: 10%; font-size: 1rem; }
-            .funnel-diagram .label-middle { top: 45%; font-size: 1rem; }
-            .funnel-diagram .label-bottom { bottom: 5%; font-size: 1.1rem; }
+            .funnel-diagram { 
+                height: auto; /* Deixa a altura ser determinada pelo conteúdo (SVG) */
+                width: 90%; 
+                max-width: 400px; /* Limite o tamanho em tablets também */
+                aspect-ratio: 1 / 1;
+            }
+            /* As labels já usam clamp, então devem se ajustar bem */
             
             .case-study blockquote { font-size: 1.5rem; padding-left: 20px; }
             .cta-final-box { padding: 50px 30px; }
-            .checklist { padding-left: 15px; } /* Ajusta padding do checklist */
-            .checklist li { padding-left: 15px; } /* Ajusta padding do item da lista */
-            .checklist li:before { left: -5px; } /* Ajusta a posição da seta */
+            .checklist { padding-left: 15px; }  
+            .checklist li { padding-left: 15px; }  
+            .checklist li:before { left: -5px; }  
             .btn-secondary { padding: 18px 35px; font-size: 1.1rem; max-width: 90vw; }
 
             /* Logo adjustments for tablets */
-            .voamkt-logo { gap: 8px; } /* Espaçamento ajustado para telas menores */
+            .voamkt-logo { gap: 8px; }  
             .logo-text { font-size: 1.2rem; letter-spacing: 3px; }
             .logo-graphic svg { width: 1.8rem; height: 1.8rem; }
             .logo-subtitle { font-size: 0.55rem; letter-spacing: 1.5px; margin-top: 1px; }
         }
 
-        /* Ajustes para telas menores que 768px (smartphones) */
         @media (max-width: 768px) {
             header {
-                flex-direction: row; 
-                justify-content: space-between; 
-                align-items: center; 
+                flex-direction: row;  
+                justify-content: space-between;  
+                align-items: center;  
                 padding: 15px 5%;
-                gap: 10px; 
+                gap: 10px;  
             }
-            .header-cta { 
-                width: auto; 
+            .header-cta {  
+                width: auto;  
                 text-align: center;
-                padding: 10px 18px; 
-                font-size: 0.9rem; 
+                padding: 10px 18px;  
+                font-size: 0.9rem;  
                 letter-spacing: 0.5px;
             }
-            .voamkt-logo { 
-                padding-right: 0; 
-                margin-top: 0; 
+            .voamkt-logo {  
+                padding-right: 0;  
+                margin-top: 0;  
             }
-            .logo-text { 
-                font-size: 1rem; 
-                letter-spacing: 2px; 
+            .logo-text {  
+                font-size: 1rem;  
+                letter-spacing: 2px;  
             }
-            .logo-graphic svg { 
-                width: 1.4rem; 
-                height: 1.4rem; 
+            .logo-graphic svg {  
+                width: 1.4rem;  
+                height: 1.4rem;  
             }
-            .logo-subtitle { 
-                font-size: 0.45rem; 
-                letter-spacing: 0.8px; 
+            .logo-subtitle {  
+                font-size: 0.45rem;  
+                letter-spacing: 0.8px;  
                 margin-top: 1px;
             }
 
             .hero { padding: 100px 15px 40px; }
             .hero h1 { font-size: 2.2rem; letter-spacing: -0.5px; line-height: 1.2; }
+            .hero h2 { font-size: 1.8rem; letter-spacing: -0.5px; line-height: 1.2; } /* Ajuste para h2 no hero */
             .btn-cta { padding: 20px 30px; font-size: 1.2rem; }
             
             .section { padding: 80px 5%; }
@@ -502,31 +524,37 @@
             .mechanism-container { gap: 30px; margin-top: 40px; }
             .step { padding-left: 20px; margin-bottom: 30px; }
             
-            .funnel-diagram { height: 280px; width: 100%; padding: 20px 0; }
-            .funnel-diagram .label-top { top: 5%; font-size: 0.9rem; }
-            .funnel-diagram .label-middle { top: 40%; font-size: 0.9rem; }
-            .funnel-diagram .label-bottom { bottom: 5%; font-size: 1rem; }
+            .funnel-diagram { 
+                height: auto; 
+                width: 100%; 
+                padding: 20px 0; 
+                max-width: 350px; /* Limite um pouco mais no mobile para não ocupar muito espaço */
+                margin: 0 auto; /* Centraliza no mobile */
+                aspect-ratio: 1 / 1;
+            }
+            /* As labels já usam clamp, então devem se ajustar bem */
 
             .case-study { padding: 40px 20px; }
             .case-study blockquote { font-size: 1.2rem; margin: 20px auto; padding-left: 15px; }
             
             .cta-final-box { padding: 30px 15px; }
-            .checklist { padding-left: 10px; } /* Ajusta padding do checklist para telas menores */
-            .checklist li { padding-left: 10px; } /* Ajusta padding do item da lista */
-            .checklist li:before { left: -10px; } /* Ajusta a posição da seta para telas menores */
+            .checklist { padding-left: 10px; }  
+            .checklist li { padding-left: 10px; }  
+            .checklist li:before { left: -10px; }  
             .btn-secondary { padding: 15px 25px; font-size: 1rem; }
         }
         
-        /* Ajustes para telas bem pequenas (ex: iPhone SE) */
         @media (max-width: 480px) {
-            .hero h1 { font-size: 1.8rem; }
-            .section-title { font-size: 1.6rem; }
+            /* Ajustes finos para telas menores */
+            .hero h1 { font-size: clamp(1.6rem, 7vw, 1.8rem); /* Torna o H1 menor em telas muito pequenas */ }
+            .hero h2 { font-size: clamp(1.4rem, 6vw, 1.5rem); /* Torna o H2 menor em telas muito pequenas */ }
+            h2.section-title { font-size: 1.6rem; }
             .btn-cta { padding: 18px 25px; font-size: 1rem; }
             .logo-text { font-size: 0.9rem; letter-spacing: 1.5px; }
-            .logo-graphic svg { width: 1.2rem; height: 1.2rem; } /* Ajuste de tamanho do SVG no mobile */
+            .logo-graphic svg { width: 1.2rem; height: 1.2rem; }  
             .logo-subtitle { font-size: 0.4rem; letter-spacing: 0.6px; }
             .header-cta { padding: 8px 15px; font-size: 0.8rem; }
-            .checklist { padding-left: 5px; } /* Ajuste final para checklist */
+            .checklist { padding-left: 5px; }  
             .checklist li { padding-left: 10px; }
             .checklist li:before { left: -5px; }
         }
@@ -540,10 +568,10 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2L19 9M12 2L5 9M12 8L19 15M12 8L5 15M12 14L19 21M12 14L5 21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-            </div> 
+            </div>  
             <div class="logo-text-container">
                 <div class="logo-text">VOAMKT</div>
-                <div class="logo-subtitle">Engenharia de Receita</div>
+                <div class="logo-subtitle">Aceleração de Vendas B2B</div>
             </div>
         </div>
 
@@ -551,11 +579,11 @@
     </header>
 
     <section class="hero">
-        <h1>DESBLOQUEIE A <span class="highlight-text">RECEITA PREVISÍVEL.</span></h1>
-        <h1>ELIMINE CURIOSOS. FOQUE NO FECHAMENTO.</h1>
+        <h1>PARE DE CAÇAR: A VOAMKT ENTREGA <span class="highlight-text">CLIENTES PRONTOS PARA FECHAR</span> NA SUA AGENDA.</h1>
+        <h2>CHEGA DE PERDER TEMPO. FOQUE SÓ NO FECHAMENTO.</h2>
         
         <p>
-            Sua equipe de vendas não deveria perder tempo qualificando. Nosso <strong>Protocolo de Engenharia de Receita</strong> entrega reuniões com decisores já validados, prontos para a sua proposta. Menos esforço, mais faturamento.
+            Sua equipe de vendas merece clientes qualificados. A VoaMkt encontra, qualifica e agenda reuniões com quem <strong>realmente quer comprar de você</strong>. Menos trabalho, mais vendas certas.
         </p>
         
         <a href="https://tally.so/r/rjjpqN" class="btn-cta">APLICAR PARA ANÁLISE DO SEU NEGÓCIO</a>
@@ -566,56 +594,56 @@
     </section>
 
     <section class="section reveal">
-        <h2 class="section-title">O CUSTO REAL DA <span class="highlight-text">IMPRODUTIVIDADE COMERCIAL.</span></h2>
+        <h2 class="section-title">O QUANTO SUA EMPRESA PERDE COM <span class="highlight-text">VENDAS "QUASE LÁ".</span></h2>
         
         <p style="text-align: center; color: var(--gray-text); margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
-            Sua operação comercial está sangrando tempo e dinheiro com problemas que você não vê:
+            Sua área comercial está jogando dinheiro fora com problemas que você nem percebe:
         </p>
 
         <div class="cards-grid">
             <div class="card">
-                <h3>Vendedor Virou Triador</h3>
-                <p>Seu Closer, pago para fechar grandes negócios, está sobrecarregado com a tarefa de qualificar. Paga-se caro por fechamento, recebe-se triagem.</p>
+                <h3>Vendedor Gasta Muito Tempo na Triagem</h3>
+                <p>Seu Vendedor, pago para fechar grandes negócios, está sobrecarregado com a tarefa de qualificar. Paga-se caro por fechamento, recebe-se triagem.</p>
             </div>
             <div class="card">
-                <h3>ROI Disfarçado de Custo</h3>
-                <p>Investir em "CPL baixo" que gera 95% de leads desqualificados é financiar o <strong>cemitério de oportunidades perdidas</strong>. Seu CAC (Custo de Aquisição de Cliente) real é catastrófico.</p>
+                <h3>"Leads Baratos" Que Não Rendem</h3>
+                <p>Comprar listas ou apostar em "leads" que nunca fecham é um buraco negro. Você paga pouco, mas perde muito mais porque seu time gasta tempo com quem não vai comprar.</p>
             </div>
             <div class="card">
                 <h3>Processos Quebrados</h3>
                 <p>Agências jogam a responsabilidade da qualificação para o cliente. Nós assumimos essa falha crítica. A <strong>qualidade da reunião</strong> é nossa responsabilidade.</p>
             </div>
             <div class="card">
-                <h3>Métricas Que Não Pagam Contas</h3>
-                <p>Cliques e impressões não impactam seu P&L. Nós focamos em <strong>Reuniões Qualificadas e Faturamento Direto</strong>. Entregamos números que o financeiro entende.</p>
+                <h3>Números Que Não Viram Venda</h3>
+                <p>Cliques e curtidas não pagam as contas. Nós focamos em <strong>Reuniões com quem compra</strong> e <strong>dinheiro no seu caixa</strong>. Entregamos resultados que o seu financeiro aprova.</p>
             </div>
             <div class="card">
                 <h3>Crescimento Traumatizado</h3>
                 <p>Acelerar o tráfego sem um filtro de vendas eficaz é sabotar sua própria operação. Nós garantimos que sua máquina de vendas suporte o crescimento sem quebrar.</p>
             </div>
             <div class="card">
-                <h3>Alto Turnover de Talentos</h3>
-                <p>Equipes de vendas desmotivadas por lidar constantemente com leads fracos resultam em alta rotatividade. Protegemos seu time, entregando tarefas de alto valor.</p>
+                <h3>Vendedores Desmotivados e Indo Embora</h3>
+                <p>Seu time de vendas se cansa de correr atrás de "clientes" que não compram. Nós protegemos seus melhores vendedores, entregando clientes prontos para fechar.</p>
             </div>
         </div>
     </section>
 
     <section class="section mechanism reveal">
-        <h2 class="section-title" style="margin-bottom: 80px;">ENGENHARIA DE RECEITA VOAMKT:<br>SEU NOVO FLUXO DE VENDAS.</h2>
+        <h2 class="section-title" style="margin-bottom: 80px;">COMO A VOAMKT ENTREGA <span class="highlight-text">CLIENTES PRONTOS PARA VOCÊ.</span></h2>
         
         <div class="mechanism-container">
             <div class="mechanism-steps">
                 <div class="step" data-step="1">
-                    <h4>Prospecção de Decisores</h4>
-                    <p>Utilizamos Inteligência de Mercado para identificar e atrair perfis de decisores com alta intenção de compra e alinhamento com seu ICP (Ideal Customer Profile).</p>
+                    <h4>Encontramos Seus Melhores Clientes</h4>
+                    <p>Usamos ferramentas e estratégias avançadas para encontrar os clientes certos, que precisam do seu produto ou serviço.</p>
                 </div>
                 <div class="step" data-step="2">
-                    <h4>Qualificação Profunda (Filtragem Estratégica)</h4>
-                    <p>Nosso time de SDR dedicado realiza uma triagem minuciosa com todos seus clientes, de forma ágil. Validamos e nutrimos seus clientes de forma humana e estratégica.</p>
+                    <h4>Qualificamos para Você (Sem Perder Tempo)</h4>
+                    <p>Nossa equipe faz todo o trabalho chato: conversa, tira dúvidas e <strong>garante que só os clientes certos cheguem até você</strong>.</p>
                 </div>
                 <div class="step" data-step="3">
-                    <h4>Reunião "Pronta para Fechar"</h4>
-                    <p>Apenas leads pré-qualificados são agendados diretamente na agenda do seu Closer. Ele recebe um relatório completo para entrar na reunião <strong>sabendo exatamente como fechar o negócio</strong>.</p>
+                    <h4>Reunião: É Só Chegar e Vender</h4>
+                    <p>Agendamos direto na agenda do seu Closer. Ele recebe tudo pronto para a reunião: um resumo completo do cliente, do que ele precisa e como fechar a venda.</p>
                 </div>
             </div>
 
@@ -625,15 +653,15 @@
                     <polygon id="stage2" class="funnel-stage" points="30,30 70,30 60,70 40,70"></polygon>
                     <polygon id="stage3" class="funnel-stage" points="40,70 60,70 55,95 45,95"></polygon>
                 </svg>
-                <span class="funnel-label label-top" style="left: 50%; transform: translateX(-50%);">1. PROSPECÇÃO DE ALVO</span>
-                <span class="funnel-label label-middle" style="left: 50%; transform: translateX(-50%);">2. QUALIFICAÇÃO VOAMKT</span>
-                <span class="funnel-label label-bottom" style="left: 50%; transform: translateX(-50%);">3. REUNIÃO AGENDADA (FECHAMENTO)</span>
+                <span class="funnel-label label-top">1. PROSPECÇÃO</span>
+                <span class="funnel-label label-middle">2. QUALIFICAÇÃO</span>
+                <span class="funnel-label label-bottom">3. REUNIÃO AGENDADA</span>
             </div>
         </div>
     </section>
 
     <section class="section reveal">
-        <h2 class="section-title" style="margin-bottom: 50px;">IMPACTO REAL NO SEU <span class="highlight-text">BALANÇO FINANCEIRO.</span></h2>
+        <h2 class="section-title" style="margin-bottom: 50px;">RESULTADOS DE VERDADE NO SEU <span class="highlight-text">CAIXA.</span></h2>
 
         <div class="case-study">
             <p style="color: var(--highlight-color); font-weight: 600; text-transform: uppercase; letter-spacing: 3px;">Case de Sucesso (Empresa B2B de SaaS)</p>
@@ -647,7 +675,7 @@
 
     <section id="aplicar" class="section reveal" style="text-align: center;">
         <div class="cta-final-box">
-            <h2 class="section-title" style="font-size: 2.8rem; margin-top: 0;">VOCÊ ESTÁ PRONTO PARA A <span class="highlight-text">RECEITA PREVISÍVEL?</span></h2>
+            <h2 class="section-title" style="font-size: 2.8rem; margin-top: 0;">VOCÊ QUER TER VENDAS CERTAS <span class="highlight-text">TODO MÊS?</span></h2>
             
             <p style="color: var(--gray-text); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
                 Nossa assessoria é seletiva. Limitamos a entrada de 4 novos parceiros por mês para garantir o padrão de excelência.
@@ -657,7 +685,7 @@
                 <li>Busca um crescimento estratégico e de longo prazo (contrato mínimo de 6 meses).</li>
                 <li>Sua empresa fatura acima de <strong>R$ 50.000/mês</strong>.</li>
                 <li>Possui um time comercial (Closer ou Diretor) dedicado ao fechamento de vendas.</li>
-                <li>Entende que não vendemos "leads", vendemos <strong>Engenharia de Receita e Otimização de Faturamento</strong>.</li>
+                <li>Entende que não vendemos "contatos", vendemos <strong>clientes prontos para comprar de você</strong>.</li>
             </div>
             
             <a href="https://tally.so/r/rjjpqN" class="btn-secondary">INICIAR MINHA APLICAÇÃO EXCLUSIVA</a>
@@ -677,7 +705,7 @@
                     reveals[i].classList.add('active');
                 } else {
                     // Opcional: para desativar a animação ao rolar para cima
-                    // reveals[i].classList.remove('active'); 
+                    // reveals[i].classList.remove('active');  
                 }
             }
         }
