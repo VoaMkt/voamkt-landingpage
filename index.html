@@ -119,27 +119,27 @@
 
         /* Estilo para o H1 principal do Hero */
         .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-size: clamp(2.2rem, 5vw, 4rem); 
             font-weight: 900;
-            letter-spacing: -3px;
+            letter-spacing: -2px; 
             line-height: 1.1;
-            max-width: 1000px;
-            margin-bottom: 25px;
+            max-width: 900px; 
+            margin-bottom: 20px; 
             opacity: 0;
             animation: fadeUp 0.8s forwards 0.2s;
         }
         
         /* Estilo para o H2 no Hero (agora o subtítulo "CHEGA DE PERDER TEMPO...") */
         .hero h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem); /* Tamanho menor que o h1 */
+            font-size: clamp(1.6rem, 4vw, 2.8rem); 
             font-weight: 700;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px; 
             line-height: 1.2;
-            max-width: 900px;
-            margin-bottom: 25px;
-            color: #fff; /* Garante a cor branca */
+            max-width: 800px; 
+            margin-bottom: 30px; 
+            color: #fff; 
             opacity: 0;
-            animation: fadeUp 0.8s forwards 0.4s; /* Atraso diferente do h1 */
+            animation: fadeUp 0.8s forwards 0.4s; 
         }
 
         .hero p {
@@ -156,13 +156,13 @@
         .btn-cta { 
             background: var(--button-bg);
             color: var(--button-text);
-            padding: 35px 70px; 
-            font-size: 1.75rem; 
+            padding: 30px 60px; 
+            font-size: 1.5rem; 
             font-weight: 900; 
             text-transform: uppercase;
             text-decoration: none;
             border-radius: 4px;
-            letter-spacing: 1.5px; 
+            letter-spacing: 1.2px; 
             transition: all 0.3s;
             opacity: 1; 
             animation: none;
@@ -191,7 +191,7 @@
             margin: 0 auto;
         }
         h2.section-title { 
-            font-size: 3.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem); 
             text-align: center;
             font-weight: 700;
             letter-spacing: -1px;
@@ -277,26 +277,23 @@
         /* DIAGRAMA DO FUNIL - CORRIGIDO */
         .funnel-diagram {
             flex: 1;
-            /* Removido height fixo aqui para permitir que o SVG determine a altura */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative; /* Mantém relative para o posicionamento das labels internas */
+            position: relative; 
             padding: 20px;
             background: #000;
             border: 1px solid #1a1a1a;
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            overflow: hidden; /* Garante que nada saia do container */
-            aspect-ratio: 1 / 1; /* Adiciona uma proporção para que o funil seja quadrado */
-            max-width: 450px; /* Limite o tamanho máximo do funil em telas maiores */
+            overflow: hidden; 
+            aspect-ratio: 1 / 1; 
+            max-width: 450px; 
         }
         .funnel-diagram svg {
             width: 100%;
             height: 100%;
-            /* Removidos position: absolute e transform: translateY(10%); */
-            /* Deixamos o SVG fluir naturalmente */
         }
         .funnel-diagram .funnel-stage {
             fill: #1a1a1a;  
@@ -322,14 +319,14 @@
             white-space: nowrap;  
             padding: 5px 10px;
             border-radius: 3px;
-            left: 50%; /* Centraliza horizontalmente */
-            transform: translateX(-50%); /* Ajuste fino de centralização */
+            left: 50%;  
+            transform: translateX(-50%);  
         }
 
         /* Posicionamento específico para cada label dentro do funil (ajustado para o SVG) */
         .funnel-diagram .label-top {
-            top: 15%; /* Ajuste a porcentagem para mover a label para cima/baixo */
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Use clamp para responsividade */
+            top: 15%;  
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);  
             color: #ccc;
         }
         .funnel-diagram .label-middle {
@@ -448,22 +445,21 @@
         
         /* MEDIA QUERIES */
         @media (max-width: 992px) {
-            .hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); letter-spacing: -1px; }
-            .hero h2 { font-size: clamp(1.8rem, 4.5vw, 3.5rem); } /* Ajuste para h2 no hero */
+            .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -0.8px; } 
+            .hero h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); } 
             .hero p { font-size: 1.1rem; }
-            h2.section-title { font-size: clamp(2rem, 5vw, 3rem); }  
-            .btn-cta { padding: 25px 45px; font-size: 1.4rem; max-width: 80vw; }
+            h2.section-title { font-size: clamp(1.6rem, 4vw, 2.2rem); }  
+            .btn-cta { padding: 22px 40px; font-size: 1.2rem; max-width: 80vw; }
             .header-cta { padding: 12px 25px; font-size: 13px; }
             
             .cards-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
             .mechanism-container { flex-direction: column; gap: 40px; }
             .funnel-diagram { 
-                height: auto; /* Deixa a altura ser determinada pelo conteúdo (SVG) */
+                height: auto; 
                 width: 90%; 
-                max-width: 400px; /* Limite o tamanho em tablets também */
+                max-width: 400px; 
                 aspect-ratio: 1 / 1;
             }
-            /* As labels já usam clamp, então devem se ajustar bem */
             
             .case-study blockquote { font-size: 1.5rem; padding-left: 20px; }
             .cta-final-box { padding: 50px 30px; }
@@ -513,12 +509,12 @@
             }
 
             .hero { padding: 100px 15px 40px; }
-            .hero h1 { font-size: 2.2rem; letter-spacing: -0.5px; line-height: 1.2; }
-            .hero h2 { font-size: 1.8rem; letter-spacing: -0.5px; line-height: 1.2; } /* Ajuste para h2 no hero */
-            .btn-cta { padding: 20px 30px; font-size: 1.2rem; }
+            .hero h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); letter-spacing: -0.5px; line-height: 1.2; } 
+            .hero h2 { font-size: clamp(1.4rem, 4.5vw, 1.8rem); letter-spacing: -0.5px; line-height: 1.2; } 
+            .btn-cta { padding: 18px 28px; font-size: 1.1rem; }
             
             .section { padding: 80px 5%; }
-            h2.section-title { font-size: 2rem; margin-bottom: 30px; }
+            h2.section-title { font-size: 1.6rem; margin-bottom: 30px; } 
             
             .cards-grid { grid-template-columns: 1fr; gap: 20px; }
             .mechanism-container { gap: 30px; margin-top: 40px; }
@@ -528,11 +524,10 @@
                 height: auto; 
                 width: 100%; 
                 padding: 20px 0; 
-                max-width: 350px; /* Limite um pouco mais no mobile para não ocupar muito espaço */
-                margin: 0 auto; /* Centraliza no mobile */
+                max-width: 350px; 
+                margin: 0 auto; 
                 aspect-ratio: 1 / 1;
             }
-            /* As labels já usam clamp, então devem se ajustar bem */
 
             .case-study { padding: 40px 20px; }
             .case-study blockquote { font-size: 1.2rem; margin: 20px auto; padding-left: 15px; }
@@ -546,10 +541,10 @@
         
         @media (max-width: 480px) {
             /* Ajustes finos para telas menores */
-            .hero h1 { font-size: clamp(1.6rem, 7vw, 1.8rem); /* Torna o H1 menor em telas muito pequenas */ }
-            .hero h2 { font-size: clamp(1.4rem, 6vw, 1.5rem); /* Torna o H2 menor em telas muito pequenas */ }
-            h2.section-title { font-size: 1.6rem; }
-            .btn-cta { padding: 18px 25px; font-size: 1rem; }
+            .hero h1 { font-size: clamp(1.5rem, 6vw, 1.8rem); } 
+            .hero h2 { font-size: clamp(1.2rem, 5vw, 1.4rem); } 
+            h2.section-title { font-size: 1.2rem; } 
+            .btn-cta { padding: 16px 22px; font-size: 0.95rem; }
             .logo-text { font-size: 0.9rem; letter-spacing: 1.5px; }
             .logo-graphic svg { width: 1.2rem; height: 1.2rem; }  
             .logo-subtitle { font-size: 0.4rem; letter-spacing: 0.6px; }
@@ -571,7 +566,7 @@
             </div>  
             <div class="logo-text-container">
                 <div class="logo-text">VOAMKT</div>
-                <div class="logo-subtitle">Aceleração de Vendas B2B</div>
+                <div class="logo-subtitle">Aceleração de Vendas</div>
             </div>
         </div>
 
@@ -579,8 +574,8 @@
     </header>
 
     <section class="hero">
-        <h1>PARE DE CAÇAR: A VOAMKT ENTREGA <span class="highlight-text">CLIENTES PRONTOS PARA FECHAR</span> NA SUA AGENDA.</h1>
-        <h2>CHEGA DE PERDER TEMPO. FOQUE SÓ NO FECHAMENTO.</h2>
+        <h1>NÓS ENTREGAMOS <span class="highlight-text">CLIENTES PRONTOS PARA FECHAR</span> NA SUA AGENDA.</h1>
+        <h2>CHEGA DE PERDER TEMPO. FOQUE SÓ NO FECHAMENTO</h2>
         
         <p>
             Sua equipe de vendas merece clientes qualificados. A VoaMkt encontra, qualifica e agenda reuniões com quem <strong>realmente quer comprar de você</strong>. Menos trabalho, mais vendas certas.
@@ -675,7 +670,7 @@
 
     <section id="aplicar" class="section reveal" style="text-align: center;">
         <div class="cta-final-box">
-            <h2 class="section-title" style="font-size: 2.8rem; margin-top: 0;">VOCÊ QUER TER VENDAS CERTAS <span class="highlight-text">TODO MÊS?</span></h2>
+            <h2 class="section-title" style="font-size: clamp(2rem, 4.5vw, 2.8rem); margin-top: 0;">VOCÊ QUER TER VENDAS CERTAS <span class="highlight-text">TODO MÊS?</span></h2>
             
             <p style="color: var(--gray-text); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
                 Nossa assessoria é seletiva. Limitamos a entrada de 4 novos parceiros por mês para garantir o padrão de excelência.
@@ -712,4 +707,3 @@
     </script>
 </body>
 </html>
-
