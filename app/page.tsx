@@ -52,7 +52,7 @@ export default function Home() {
 
   const heroTitleVariant = {
     hidden: { opacity: 0, y: 30 },
-    visible: (delay: number) => ({ 
+    visible: (delay: any) => ({ 
         opacity: 1, 
         y: 0, 
         transition: { duration: 0.8, delay: delay, ease: [0.25, 0.4, 0.25, 1] }
@@ -306,4 +306,5 @@ export default function Home() {
       `}</style>
     </main>
   );
+
 }
