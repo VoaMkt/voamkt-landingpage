@@ -1,0 +1,539 @@
+/* =========================================
+   VARIÁVEIS GLOBAIS E RESET
+   ========================================= */
+:root {
+    /* Paleta de Cores "Dark Mode Premium" */
+    --color-bg-main: #0a192f;       /* Azul marinho profundo (quase preto) */
+    --color-bg-secondary: #112240;  /* Azul um pouco mais claro para contraste */
+    --color-bg-tertiary: #1a2f4e;   /* Para cartões e destaques */
+    
+    --color-accent: #00ffff;        /* Ciano/Neon para botões e destaques */
+    --color-accent-hover: #33ffff;  /* Ciano mais claro para hover */
+    
+    --color-text-main: #ffffff;     /* Texto principal branco */
+    --color-text-muted: #8892b0;    /* Texto secundário cinza claro */
+    --color-text-dark: #0a192f;     /* Texto escuro para usar sobre a cor accent */
+
+    /* Tipografia */
+    --font-main: 'Inter', sans-serif;
+
+    /* Espaçamentos e Tamanhos */
+    --container-width: 1140px;
+    --section-padding: 80px 0;
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Utilitários */
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4 {
+    color: var(--color-text-main);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; margin-bottom: 20px; }
+h2 { font-size: 2rem; margin-bottom: 20px; }
+h3 { font-size: 1.5rem; margin-bottom: 15px; }
+
+p { color: var(--color-text-muted); margin-bottom: 20px; }
+
+a { text-decoration: none; }
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-hover);
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-small {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    background-color: transparent;
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+}
+
+.btn-small:hover {
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+}
+
+.btn-large {
+    padding: 18px 40px;
+    font-size: 1.1rem;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* ================= SEÇÕES ESPECÍFICAS ================= */
+
+/* --- Header --- */
+.header {
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    background-color: rgba(10, 25, 47, 0.95); /* Fundo semi-transparente */
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img {
+    max-height: 50px; /* Ajuste conforme seu logo */
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    padding: 120px 0 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Textura de fundo sutil tecnológica (opcional) */
+.hero-bg-texture {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-subheadline {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.cta-subtext {
+    font-size: 0.9rem;
+    margin-top: 15px;
+    opacity: 0.7;
+}
+
+/* Animação de entrada */
+.fade-in {
+    animation: fadeInMove 1s ease-out;
+}
+@keyframes fadeInMove {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animação de pulso suave no botão */
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
+}
+
+/* --- Authority Section --- */
+.authority-section {
+    padding: 40px 0;
+    background-color: var(--color-bg-secondary);
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.authority-section h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
+    margin-bottom: 30px;
+}
+
+.authority-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--color-accent);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.stat-divider {
+    height: 40px;
+    width: 1px;
+    background-color: rgba(255,255,255,0.1);
+    display: none; /* Oculto em mobile */
+}
+
+/* --- Pain Section --- */
+.pain-section {
+    padding: var(--section-padding);
+}
+
+.pain-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.pain-text {
+    flex: 1;
+}
+
+.pain-result {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(255, 0, 0, 0.1); /* Vermelho sutil para dor */
+    border-left: 4px solid #ff4444;
+    color: var(--color-text-main);
+}
+
+.pain-visual {
+    flex: 1;
+}
+
+.pain-visual img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    opacity: 0.8;
+    mix-blend-mode: lighten; /* Efeito visual interessante no fundo escuro */
+}
+
+/* --- Solution Section (Processo) --- */
+.solution-section {
+    padding: var(--section-padding);
+    background-color: var(--color-bg-secondary);
+}
+
+.section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px;
+}
+
+.process-steps {
+    display: flex;
+    gap: 30px;
+}
+
+.step-card {
+    flex: 1;
+    background-color: var(--color-bg-main);
+    padding: 40px 30px;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Destaque para o passo do meio (Filtro) */
+.highlighted-step {
+    background-color: var(--color-bg-tertiary);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+.step-icon {
+    font-size: 2rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.2);
+    margin-bottom: 20px;
+}
+
+.icon-accent {
+    color: var(--color-accent);
+}
+
+/* --- Benefits Section --- */
+.benefits-section {
+    padding: var(--section-padding);
+    text-align: center;
+}
+
+.benefits-section h2 {
+    margin-bottom: 50px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.benefit-item {
+    position: relative;
+    padding-left: 35px;
+    color: var(--color-text-main);
+    font-weight: 500;
+}
+
+/* Ícone de check usando CSS puro */
+.benefit-item::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-accent);
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+/* --- Offer Section --- */
+.offer-section {
+    padding: var(--section-padding);
+    background: linear-gradient(to bottom, var(--color-bg-main), var(--color-bg-secondary));
+}
+
+.offer-box {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--color-bg-tertiary);
+    padding: 50px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.15);
+    text-align: center;
+    position: relative;
+}
+
+.offer-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+    padding: 8px 20px;
+    font-weight: 700;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.offer-list {
+    list-style: none;
+    text-align: left;
+    margin: 40px auto;
+    display: inline-block;
+}
+
+.offer-list li {
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+    color: var(--color-text-muted);
+}
+
+.offer-list li::before {
+    content: '•';
+    color: var(--color-accent);
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.offer-list .highlight-item {
+    color: var(--color-text-main);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* --- Qualification Section --- */
+.qualification-section {
+    padding: var(--section-padding);
+    text-align: center;
+}
+
+.qualification-section h3 {
+    margin-bottom: 50px;
+}
+
+.qualification-grid {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+.qual-col {
+    flex: 1;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    text-align: left;
+}
+
+.qual-col h4 {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.qual-col ul {
+    list-style: none;
+}
+
+.qual-col li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    color: var(--color-text-muted);
+}
+
+/* Estilo "Para Você" */
+.for-you {
+    background-color: rgba(0, 255, 255, 0.05);
+    border: 1px solid var(--color-accent);
+}
+
+.for-you h4 { color: var(--color-accent); }
+
+.for-you li::before {
+    content: '✓';
+    position: absolute; left: 0; color: var(--color-accent);
+}
+
+/* Estilo "Não é para Você" */
+.not-for-you {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.not-for-you h4 { color: var(--color-text-muted); }
+
+.not-for-you li::before {
+    content: '✕';
+    position: absolute; left: 0; color: #ff4444;
+}
+
+/* --- Final CTA Section --- */
+.final-cta-section {
+    padding: 100px 0;
+    background-color: var(--color-bg-secondary);
+    text-align: center;
+}
+
+.final-cta-content {
+    max-width: 700px;
+}
+
+/* --- Footer --- */
+.footer {
+    padding: 40px 0;
+    text-align: center;
+    background-color: var(--color-bg-main);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+.footer-logo {
+    color: var(--color-text-main);
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   RESPONSIVIDADE (MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+    
+    .header-cta { display: none; } /* Opcional: Esconder botão do header no mobile para limpar visual */
+    .logo-container { margin: 0 auto; } /* Centralizar logo no mobile */
+
+    .hero-section { padding-top: 80px; }
+
+    .authority-stats { flex-direction: column; gap: 20px; }
+    .stat-divider { display: none; }
+
+    .pain-content { flex-direction: column; }
+    .pain-visual { order: -1; margin-bottom: 30px; } /* Imagem primeiro no mobile */
+
+    .process-steps { flex-direction: column; }
+    .highlighted-step { transform: scale(1.02); } /* Leve destaque no mobile */
+
+    .benefits-grid { grid-template-columns: 1fr; }
+
+    .offer-box { padding: 30px 20px; }
+    .offer-badge { font-size: 0.8rem; padding: 6px 15px; }
+
+    .qualification-grid { flex-direction: column; }
+    .qual-col { max-width: 100%; }
+}

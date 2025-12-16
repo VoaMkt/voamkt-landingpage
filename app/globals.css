@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Garante que o fundo base seja preto para evitar clarão ao carregar */
+body {
+  background-color: #030303;
+  color: #ffffff;
+}

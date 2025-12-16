@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FILTRA | Assessoria de Crescimento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #050507;
+            --primary-glow: linear-gradient(180deg, #00C6FF 0%, #0072FF 100%);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #9CA3AF;
+            --accent: #00f0ff;
+            --danger: #ff4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; }
+        
+        strong { color: white; font-weight: 600; }
+
+        /* --- BACKGROUND FX --- */
+        .ambient-light {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: #050507;
+        }
+        
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.3;
+            animation: float 12s infinite ease-in-out;
+        }
+
+        .orb-1 { width: 500px; height: 500px; background: #0072FF; top: -150px; left: -100px; }
+        .orb-2 { width: 400px; height: 400px; background: #00C6FF; bottom: 10%; right: -100px; animation-delay: 2s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(20px, 40px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -1px;
+        }
+
+        .logo-icon {
+            width: 28px; height: 28px;
+            background: var(--primary-glow);
+            clip-path: polygon(0 0, 100% 0, 60% 60%, 60% 100%, 40% 100%, 40% 60%);
+        }
+
+        .cta-outline {
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .cta-outline:hover { background: white; color: black; border-color: white; }
+
+        /* --- HERO --- */
+        .hero { padding: 60px 0 80px; text-align: center; }
+        
+        .hero h1 { 
+            font-size: 3rem; 
+            line-height: 1.1; 
+            margin-bottom: 24px; 
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .hero-sub {
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #fff 20%, #9CA3AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p { 
+            font-size: 1.2rem; 
+            color: var(--text-muted); 
+            max-width: 750px; 
+            margin: 0 auto 40px; 
+            font-weight: 300; 
+        }
+        
+        .btn-glow {
+            background: var(--primary-glow);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1rem;
+            display: inline-block;
+            box-shadow: 0 0 30px rgba(0, 198, 255, 0.25);
+            transition: all 0.3s ease;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            border: none;
+        }
+        .btn-glow:hover { transform: translateY(-3px); box-shadow: 0 0 60px rgba(0, 198, 255, 0.5); }
+
+        /* --- BANNER POSITIONING (Antiga barra de stats) --- */
+        .positioning-bar {
+            border-top: 1px solid var(--glass-border); 
+            border-bottom: 1px solid var(--glass-border);
+            padding: 30px 0; 
+            margin-bottom: 100px; 
+            background: rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .positioning-text {
+            color: var(--text-muted);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        .positioning-text strong { color: white; }
+
+        /* --- PAIN GRID (NOVO LAYOUT DE 6 ITENS) --- */
+        .pain-section { margin-bottom: 150px; }
+        .section-header { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+        .section-header h2 { font-size: 2.2rem; margin-bottom: 15px; }
+        .section-header p { color: var(--text-muted); font-size: 1.1rem; }
+
+        .pain-grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .pain-card {
+            background: rgba(255, 68, 68, 0.03); /* Leve tom avermelhado */
+            border: 1px solid rgba(255, 68, 68, 0.15);
+            padding: 30px 25px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+        .pain-card:hover {
+            background: rgba(255, 68, 68, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .pain-icon { font-size: 2rem; margin-bottom: 15px; display: block; }
+        .pain-card h3 { font-size: 1.1rem; margin-bottom: 10px; color: white; }
+        .pain-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* --- FUNIL TECH (Solução) --- */
+        .funnel-section {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto 150px;
+            padding: 20px 0;
+        }
+
+        .funnel-line {
+            position: absolute;
+            left: 50%; top: 20px; bottom: 20px; width: 2px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, var(--accent) 50%, rgba(255,255,255,0.1) 100%);
+            transform: translateX(-50%); z-index: 0;
+        }
+
+        .funnel-step {
+            position: relative; z-index: 1; margin-bottom: 60px;
+            display: flex; justify-content: center;
+        }
+        .funnel-step:last-child { margin-bottom: 0; }
+
+        .funnel-card {
+            background: #0a0a0c;
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%; max-width: 600px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Destaque passo 2 */
+        .funnel-step:nth-child(3) .funnel-card {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+        }
+
+        .step-icon-glow {
+            width: 60px; height: 60px;
+            background: var(--bg-dark);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: -70px auto 20px;
+            font-size: 1.5rem; color: var(--accent);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            position: relative; z-index: 2;
+        }
+
+        .funnel-card h3 { font-size: 1.4rem; margin-bottom: 10px; color: white; }
+        .funnel-card p { color: var(--text-muted); font-size: 1rem; }
+
+        /* --- OFFER --- */
+        .offer-wrapper { max-width: 800px; margin: 0 auto 100px; position: relative; }
+        
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 16px;
+            padding: 40px;
+        }
+        
+        .offer-card { text-align: center; border: 1px solid var(--accent); box-shadow: 0 0 60px rgba(0, 240, 255, 0.08); }
+        .offer-tag {
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            background: var(--accent); color: #000; padding: 5px 20px;
+            font-weight: 700; border-radius: 20px; text-transform: uppercase; font-size: 0.8rem;
+        }
+        .offer-list { text-align: left; list-style: none; margin: 30px auto; display: inline-block; }
+        .offer-list li { margin-bottom: 12px; color: var(--text-muted); display: flex; gap: 10px; }
+        .bold { color: white; font-weight: 600; }
+
+        /* --- FOOTER --- */
+        footer { border-top: 1px solid var(--glass-border); padding: 50px 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .pain-grid-container { grid-template-columns: 1fr; }
+            .funnel-line { left: 20px; transform: none; }
+            .funnel-step { justify-content: flex-start; padding-left: 50px; }
+            .funnel-card { text-align: left; }
+            .step-icon-glow { margin: 0; position: absolute; left: -60px; top: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-light">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <div class="container">
+        
+        <nav>
+            <div class="logo">
+                <div class="logo-icon"></div>
+                FILTRA
+            </div>
+            <a href="https://wa.me/5544997302097" class="cta-outline">Análise do Negócio</a>
+        </nav>
+
+        <section class="hero">
+            <span class="hero-sub">Chega de perder tempo. Foque só no fechamento.</span>
+            <h1 class="gradient-text">Nós entregamos clientes<br>prontos para fechar<br>na sua agenda.</h1>
+            <p>Sua equipe de vendas merece clientes qualificados. A <strong>FILTRA</strong> encontra, qualifica e agenda reuniões com quem realmente quer comprar de você. Menos trabalho, mais vendas certas.</p>
+            
+            <a href="https://wa.me/5544997302097" class="btn-glow">APLICAR PARA ANÁLISE DO SEU NEGÓCIO</a>
+        </section>
+
+    </div>
+
+    <div class="positioning-bar">
+        <div class="container">
+            <p class="positioning-text">A FILTRA é uma <strong>assessoria de crescimento</strong>. Não uma agência tradicional.</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <section class="pain-section">
+            <div class="section-header">
+                <h2>O quanto sua empresa perde com <span style="color: #ff4444;">vendas "quase lá"</span>?</h2>
+                <p>Sua área comercial está jogando dinheiro fora com problemas que você nem percebe:</p>
+            </div>
+
+            <div class="pain-grid-container">
+                <div class="pain-card">
+                    <span class="pain-icon">⏳</span>
+                    <h3>Vendedor Gasta Tempo na Triagem</h3>
+                    <p>Seu Vendedor, pago para fechar grandes negócios, está sobrecarregado triando contatos. Paga-se caro por fechamento, recebe-se triagem.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-icon">🗑️</span>
+                    <h3>"Leads Baratos" Que Não Rendem</h3>
+                    <p>Comprar listas ou apostar em "leads" que nunca fecham é um buraco negro. Você paga pouco, mas perde tempo com quem não compra.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-icon">⚙️</span>
+                    <h3>Processos Quebrados</h3>
+                    <p>Agências jogam a responsabilidade da qualificação para o cliente. Nós assumimos essa falha. A qualidade da reunião é nossa prioridade.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-icon">📉</span>
+                    <h3>Números Que Não Viram Venda</h3>
+                    <p>Cliques e curtidas não pagam as contas. Nós focamos em Reuniões com quem compra e dinheiro no seu caixa.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-icon">🛑</span>
+                    <h3>Crescimento Traumatizado</h3>
+                    <p>Acelerar o tráfego sem um filtro de vendas eficaz é sabotar sua operação. Garantimos que sua máquina suporte o crescimento.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-icon">🚪</span>
+                    <h3>Vendedores Desmotivados</h3>
+                    <p>Seu time cansa de correr atrás de "clientes" que não compram. Nós protegemos seus melhores vendedores, entregando leads prontos.</p>
+                </div>
+            </div>
+        </section>
+
+        <div style="text-align: center; margin-bottom: 60px;">
+            <h2>O Método FILTRA</h2>
+            <p style="color: var(--text-muted);">Como transformamos curiosos em vendas.</p>
+        </div>
+
+        <div class="funnel-section">
+            <div class="funnel-line"></div>
+            
+            <div class="funnel-step">
+                <div class="funnel-card">
+                    <div class="step-icon-glow">1</div>
+                    <h3>Encontramos Seus Melhores Clientes</h3>
+                    <p>Usamos ferramentas e estratégias avançadas para encontrar os clientes certos, que precisam do seu produto ou serviço.</p>
+                </div>
+            </div>
+
+            <div class="funnel-step">
+                <div class="funnel-card">
+                    <div class="step-icon-glow">2</div>
+                    <h3 style="color: var(--accent);">Qualificamos para Você</h3>
+                    <p>Nossa equipe faz todo o trabalho chato: conversa, tira dúvidas e garante que só os clientes certos cheguem até você.</p>
+                </div>
+            </div>
+
+            <div class="funnel-step">
+                <div class="funnel-card">
+                    <div class="step-icon-glow">3</div>
+                    <h3>Reunião: É Só Chegar e Vender</h3>
+                    <p>Agendamos direto na agenda do seu Closer. Ele recebe tudo pronto para a reunião: resumo do cliente, dores e como fechar a venda.</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="offer-wrapper">
+            <div class="glass-card offer-card">
+                <div class="offer-tag">PLANO ACELERAÇÃO</div>
+                <h2 style="margin-top: 15px;">Assessoria de Crescimento</h2>
+                <ul class="offer-list">
+                    <li><span style="color: var(--accent);">✓</span> Gestão de Tráfego Pago Estratégico</li>
+                    <li><span style="color: var(--accent);">✓</span> Criação de Anúncios e Conteúdo</li>
+                    <li class="bold"><span style="color: var(--accent);">★</span> SDR Dedicado (Pré-vendas)</li>
+                    <li class="bold"><span style="color: var(--accent);">★</span> Qualificação humana de todos os leads</li>
+                    <li><span style="color: var(--accent);">✓</span> Agendamento direto na agenda do seu time</li>
+                </ul>
+                <br>
+                <a href="https://wa.me/5544997302097" class="btn-glow" style="width: 100%;">APLICAR PARA ANÁLISE DO SEU NEGÓCIO</a>
+            </div>
+        </section>
+
+        <section style="text-align: center; margin-bottom: 100px;">
+            <h2 style="margin-bottom: 20px;">Sua próxima grande venda está perdida<br>no meio dos curiosos.</h2>
+            <a href="https://wa.me/5544997302097" class="btn-glow">AGENDAR MINHA ANÁLISE ESTRATÉGICA</a>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <p style="opacity: 0.5;">FILTRA © 2025.<br>Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
