@@ -288,7 +288,7 @@ export default function Home() {
                     <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" /> Negócios e Profissionais que já vendem e querem crescer.</li>
                     <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" /> Times comerciais (ou donos) cansados de contatos frios.</li>
                     <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" /> Quem busca lucro real e dinheiro no caixa.</li>
-                    <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" /> Quem possui produto ou serviço de Ticket Médio ou Alto.</li>
+                    <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" /> Empresa que vende produto ou serviço.</li>
                 </ul>
             </div>
 
@@ -354,3 +354,4 @@ export default function Home() {
     </main>
   );
 }
+
