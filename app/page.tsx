@@ -1,18 +1,23 @@
 "use client";
 
 import React from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Inter } from "next/font/google";
 import { 
   Hourglass, Trash2, Settings, TrendingDown, 
-  AlertTriangle, Frown, Filter 
+  AlertTriangle, Frown, Filter // <--- ADICIONEI O FILTER (FUNIL) AQUI
 } from "lucide-react";
+
+// --- IMPORTAÇÃO DA LOGO REMOVIDA ---
+// Não precisamos mais importar arquivos. Tudo é feito via código agora.
 
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700", "800"] });
 
+// --- CONFIGURAÇÃO DO WHATSAPP ---
+const WHATSAPP_LINK = "https://wa.me/5544997302097?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Filtra%20e%20gostaria%20de%20agendar%20uma%20an%C3%A1lise.";
+
 // --- COMPONENTES VISUAIS ---
 
-// 1. CARD TILT (Leve e performático)
 const TiltCard = ({ children, className }: { children: React.ReactNode; className?: string }) => {
     return (
         <motion.div
@@ -25,11 +30,12 @@ const TiltCard = ({ children, className }: { children: React.ReactNode; classNam
     );
 };
 
-// 2. BOTÃO PREMIUM (CSS Puro - Zero Lag)
 const PremiumButton = ({ children, href, className, variant = "primary" }: { children: React.ReactNode; href: string; className?: string, variant?: "primary" | "secondary" }) => {
     return (
       <motion.a
         href={href}
+        target="_blank"
+        rel="noopener noreferrer"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className={`${className} relative overflow-hidden flex items-center justify-center`}
@@ -45,12 +51,12 @@ const PremiumButton = ({ children, href, className, variant = "primary" }: { chi
 // --- PÁGINA ---
 
 export default function Home() {
-  const fadeInUp = {
+  const fadeInUp: any = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
   };
 
-  const heroTitleVariant = {
+  const heroTitleVariant: any = {
     hidden: { opacity: 0, y: 30 },
     visible: (delay: any) => ({ 
         opacity: 1, 
@@ -77,36 +83,55 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] via-transparent to-cyan-500/[0.05] blur-3xl" />
       </div>
 
-      {/* --- HEADER (FULL WIDTH / EXTREMIDADES) --- */}
-      {/* Tirei o Header de dentro do container restritivo para garantir que ocupe a largura total */}
+      {/* --- HEADER (LOGO 100% CÓDIGO) --- */}
       <div className="relative z-20 w-full px-5 md:px-8 py-6">
         <nav className="w-full max-w-[1400px] mx-auto flex justify-between items-center">
-            {/* ESQUERDA: LOGO */}
-            <motion.div initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{duration:0.5}} className="flex items-center gap-3 text-xl md:text-2xl font-bold tracking-tight">
-                <div className="relative flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md overflow-hidden shadow-inner-sm">
-                    <Filter className="w-4 h-4 md:w-5 md:h-5 text-cyan-400 fill-cyan-400/20 relative z-10 transform rotate-180" strokeWidth={1.5} />
+            
+            {/* LOGO CRIADA COM CÓDIGO */}
+            <motion.div 
+              initial={{opacity:0, x:-20}} 
+              animate={{opacity:1, x:0}} 
+              transition={{duration:0.5}} 
+              className="group flex items-center gap-3 cursor-default"
+            >
+                {/* ÍCONE DO FUNIL ESTILIZADO */}
+                <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 shadow-[0_0_15px_rgba(34,211,238,0.1)] group-hover:shadow-[0_0_25px_rgba(34,211,238,0.3)] transition-all duration-500 overflow-hidden">
+                    {/* Efeito de brilho no fundo do ícone */}
+                    <div className="absolute inset-0 bg-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    {/* O Funil (SVG) */}
+                    <Filter className="relative z-10 w-6 h-6 text-cyan-400 fill-cyan-400/20 transform group-hover:rotate-12 transition-transform duration-500" />
                 </div>
-                FILTRA
+
+                {/* TEXTO DA MARCA */}
+                <div className="flex flex-col justify-center -space-y-1">
+                    <span className="text-2xl font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors duration-300">
+                        FILTRA
+                    </span>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-medium">
+                        Assessoria
+                    </span>
+                </div>
             </motion.div>
 
-            {/* DIREITA: BOTÃO ANÁLISE */}
+            {/* BOTÃO CABEÇALHO */}
             <motion.div initial={{opacity:0, x:20}} animate={{opacity:1, x:0}} transition={{duration:0.5}}>
                 <PremiumButton 
                     variant="secondary"
-                    href="https://wa.me/5544997302097" 
+                    href={WHATSAPP_LINK}
                     className="inline-block border border-white/10 bg-white/5 backdrop-blur-md px-4 py-2 md:px-6 md:py-2.5 rounded-full text-xs md:text-sm font-medium hover:bg-white hover:text-black transition-all duration-300"
                 >
                     <span className="md:hidden">Análise</span>
-                    <span className="hidden md:inline">Análise do Negócio</span>
+                    <span className="hidden md:inline">Agendar Análise</span>
                 </PremiumButton>
             </motion.div>
         </nav>
       </div>
 
-      {/* CONTAINER DO CONTEÚDO PRINCIPAL (Mais centralizado) */}
+      {/* CONTEÚDO PRINCIPAL */}
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-5 md:px-8">
         
-        {/* HERO */}
+        {/* HERO SECTION */}
         <section className="text-center py-16 md:py-32 flex flex-col items-center justify-center">
           <motion.div 
             initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }}
@@ -134,7 +159,7 @@ export default function Home() {
           <motion.div initial={{ opacity: 0, scale: 0.8, y:20 }} animate={{ opacity: 1, scale: 1, y:0 }} transition={{ delay: 0.8, type: "spring" }} className="w-full md:w-auto px-4">
             <PremiumButton 
               variant="primary"
-              href="https://wa.me/5544997302097" 
+              href={WHATSAPP_LINK} 
               className="group w-full md:w-auto px-8 py-4 bg-white text-black font-bold text-lg rounded-full shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] transition-shadow duration-300"
             >
                <span className="flex items-center gap-2">
@@ -146,7 +171,7 @@ export default function Home() {
         </section>
       </div>
 
-      {/* BARRA SEPARADORA */}
+      {/* SEPARADOR */}
       <motion.div initial={{ opacity:0, y:30 }} whileInView={{ opacity:1, y:0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className="relative z-10 border-y border-white/[0.08] bg-black/30 py-6 md:py-8 mb-20 md:mb-24 backdrop-blur-sm">
         <div className="max-w-[1100px] mx-auto px-5 text-center">
           <p className="text-[#9CA3AF] text-base md:text-lg tracking-wide">
@@ -186,7 +211,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* TIMELINE MÉTODO */}
+      {/* MÉTODO */}
       <div className="relative z-10 max-w-[800px] mx-auto px-5 mb-24 md:mb-32">
         <div className="text-center mb-12 md:mb-16">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-3xl font-bold mb-2">O Método FILTRA</motion.h2>
@@ -215,7 +240,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* --- OFFER CARD COM LUZ DUPLA (DOUBLE BEAM FIX) --- */}
+      {/* OFFER CARD */}
       <div className="relative z-10 max-w-[800px] mx-auto px-5 mb-20 md:mb-24">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95, y: 50 }}
@@ -224,16 +249,11 @@ export default function Home() {
           transition={{ type: "spring", bounce: 0.4 }}
           className="relative group rounded-2xl md:rounded-3xl overflow-hidden bg-[#0a0a0c]"
         >
-          {/* LUZ DUPLA GIRATÓRIA:
-              Usa 'animate-spin-slow' para girar.
-              'bg-double-beam' cria duas pontas de luz ciano opostas.
-          */}
+          {/* LUZ DUPLA GIRATÓRIA */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400%] h-[400%] animate-spin-slow opacity-100 z-0 bg-double-beam" />
-
-          {/* CAPA PRETA PARA COBRIR O CENTRO */}
           <div className="absolute inset-[1px] bg-[#050505] rounded-2xl md:rounded-3xl z-10" />
 
-          {/* CONTEÚDO DO CARD */}
+          {/* CONTEÚDO CARD */}
           <div className="relative z-20 p-6 md:p-10 text-center rounded-2xl md:rounded-3xl h-full w-full">
             <div className="absolute inset-0 z-0 bg-gradient-to-b from-cyan-500/[0.05] to-transparent pointer-events-none rounded-2xl md:rounded-3xl" />
 
@@ -253,7 +273,7 @@ export default function Home() {
                 </ul>
 
                 <div className="w-full">
-                    <PremiumButton variant="primary" href="https://wa.me/5544997302097" className="block w-full bg-white text-black py-3 md:py-4 rounded-xl font-bold uppercase tracking-wide hover:bg-cyan-50 transition-all duration-300 shadow-lg hover:shadow-cyan-400/20 text-sm md:text-base">
+                    <PremiumButton variant="primary" href={WHATSAPP_LINK} className="block w-full bg-white text-black py-3 md:py-4 rounded-xl font-bold uppercase tracking-wide hover:bg-cyan-5 transition-all duration-300 shadow-lg hover:shadow-cyan-400/20 text-sm md:text-base">
                       Aplicar para análise
                     </PremiumButton>
                 </div>
@@ -267,7 +287,7 @@ export default function Home() {
             Sua próxima grande venda está perdida<br className="hidden md:block" /> no meio dos curiosos.
           </motion.h2>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-            <PremiumButton variant="primary" href="https://wa.me/5544997302097" className="inline-block bg-white text-black px-8 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base uppercase tracking-wide hover:bg-cyan-400 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+            <PremiumButton variant="primary" href={WHATSAPP_LINK} className="inline-block bg-white text-black px-8 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base uppercase tracking-wide hover:bg-cyan-400 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
                 Agendar Minha Análise
             </PremiumButton>
           </motion.div>
@@ -278,9 +298,8 @@ export default function Home() {
         <p className="opacity-50">FILTRA © 2025. Todos os direitos reservados.</p>
       </footer>
 
-      {/* --- ESTILOS GLOBAIS --- */}
+      {/* ESTILOS CSS GLOBAIS */}
       <style jsx global>{`
-        /* Rotação */
         @keyframes spin-slow {
           from { transform: translate(-50%, -50%) rotate(0deg); }
           to { transform: translate(-50%, -50%) rotate(360deg); }
@@ -288,17 +307,15 @@ export default function Home() {
         .animate-spin-slow {
           animation: spin-slow 8s linear infinite;
         }
-        
-        /* Gradiente Duplo (180 graus de diferença) */
         .bg-double-beam {
             background: conic-gradient(
                 from 0deg, 
                 transparent 0deg, 
                 transparent 80deg, 
-                #22d3ee 100deg, /* Luz 1 */
+                #22d3ee 100deg,
                 transparent 120deg, 
                 transparent 260deg, 
-                #22d3ee 280deg, /* Luz 2 (oposta) */
+                #22d3ee 280deg,
                 transparent 300deg, 
                 transparent 360deg
             );
@@ -306,5 +323,4 @@ export default function Home() {
       `}</style>
     </main>
   );
-
 }
