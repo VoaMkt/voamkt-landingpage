@@ -11,8 +11,9 @@ import {
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700", "800"] });
 
 // --- LINKS DO WHATSAPP ---
-const WHATSAPP_ANALISE = "https://wa.me/5544997302097?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Filtra%20e%20gostaria%20de%20agendar%20uma%20an%C3%A1lise.";
-const WHATSAPP_ESCALA = "https://wa.me/5544997302097?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20como%20escalar%20minhas%20vendas%20com%20a%20metodologia%20da%20Filtra.";
+const WHATSAPP_ANALISE = "https://wa.me/5544997302097?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Filtra%20e%20gostaria%20de%20uma%20an%C3%A1lise%20do%20meu%20comercial.";
+const WHATSAPP_ESCALA = "https://wa.me/5544997302097?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20como%20escalar%20minhas%20vendas%20com%20a%20Filtra.";
+const WHATSAPP_CONSULTOR = "https://wa.me/5544997302097?text=Ol%C3%A1%21%20Tenho%20interesse%20na%20assessoria%20da%20Filtra%20e%20gostaria%20de%20falar%20com%20um%20consultor.";
 
 // --- COMPONENTES VISUAIS ---
 
@@ -272,7 +273,7 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* --- SEÇÃO "PARA QUEM É" (SUBSTITUI DEPOIMENTOS) --- */}
+      {/* --- SEÇÃO "PARA QUEM É" --- */}
       <div className="relative z-10 max-w-[1100px] mx-auto px-5 mb-24 md:mb-32">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* PARA QUEM É */}
@@ -285,9 +286,9 @@ export default function Home() {
                 </h3>
                 <ul className="space-y-4 text-[#9CA3AF] font-light text-sm md:text-base relative z-10">
                     <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" /> Negócios e Profissionais que já vendem e querem crescer.</li>
-                    <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" /> Quem cansou de gastar tempo com curiosos.</li>
+                    <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" /> Times comerciais (ou donos) cansados de contatos frios.</li>
                     <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" /> Quem busca lucro real e dinheiro no caixa.</li>
-                    <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" /> Empresas que vendem produtos ou serviços.</li>
+                    <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" /> Quem possui produto ou serviço de Ticket Médio ou Alto.</li>
                 </ul>
             </div>
 
@@ -316,8 +317,8 @@ export default function Home() {
             <span className="text-cyan-400">Nós fazemos o filtro, você faz a venda.</span>
           </motion.h2>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-            <PremiumButton variant="primary" href={WHATSAPP_ESCALA} className="inline-block bg-white text-black px-8 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base uppercase tracking-wide hover:bg-cyan-400 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                Agendar Minha Análise
+            <PremiumButton variant="primary" href={WHATSAPP_CONSULTOR} className="inline-block bg-white text-black px-8 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base uppercase tracking-wide hover:bg-cyan-400 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                Falar com um Consultor
             </PremiumButton>
           </motion.div>
         </div>
